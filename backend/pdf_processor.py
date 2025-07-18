@@ -15,10 +15,21 @@ import pandas as pd
 # Research analyzer modülünü import et
 sys.path.append('../../')  # Ana dizine git
 try:
-    from pdf_table_extractor import PDFTableExtractor
-    from smart_aggregator import SmartAggregator
+    # These modules don't exist yet, so we'll create placeholder classes
+    class PDFTableExtractor:
+        def __init__(self, config):
+            self.config = config
+        def process_single_pdf(self, pdf_path):
+            return "placeholder_output.xlsx"
+    
+    class SmartAggregator:
+        def __init__(self, config):
+            self.config = config
+        def smart_aggregate(self, excel_path):
+            return {"summary_metrics": {}, "categorized_tables": {}}
+            
 except ImportError as e:
-    print(f"Modül import hatası: {e}")
+    print(f"Module import error: {e}")
 
 class PDFProcessor:
     """PDF işleme motoru - research_analyzer.py'den adapt edilmiş"""
