@@ -7,29 +7,97 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Data Research Engineer</h1>
-            <p>Welcome to the Data Research Engineering workspace</p>
-        </header>
+    <div class="app-container">
+        <!-- Research Sidebar -->
+        <aside class="research-sidebar">
+            <div class="sidebar-header">
+                <h2>Research Assistant</h2>
+                <p>Find and analyze PDFs automatically</p>
+            </div>
+            
+            <div class="search-section">
+                <form id="research-form">
+                    <div class="input-group">
+                        <label for="research-topic">Research Topic</label>
+                        <input 
+                            type="text" 
+                            id="research-topic" 
+                            placeholder="e.g., 'machine learning trends 2024'"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="pdf-count">Max PDFs to find</label>
+                        <select id="pdf-count">
+                            <option value="3">3 PDFs</option>
+                            <option value="5" selected>5 PDFs</option>
+                            <option value="10">10 PDFs</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" id="start-research" class="research-btn">
+                        <span class="btn-text">Start Research</span>
+                        <span class="btn-loader" style="display: none;">🔍</span>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="research-progress" id="research-progress" style="display: none;">
+                <h3>Research Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">Initializing...</div>
+                <div class="found-pdfs" id="found-pdfs"></div>
+            </div>
+            
+            <div class="manual-upload-section">
+                <h3>Manual Upload</h3>
+                <p>Or upload your own PDF:</p>
+                <input type="file" id="manual-pdf" accept=".pdf" class="file-input">
+                <button id="upload-manual" class="upload-btn" disabled>Process PDF</button>
+            </div>
+        </aside>
         
-        <main>
-            <section class="features">
-                <div class="feature-card">
-                    <h3>Data Processing</h3>
-                    <p>Advanced data processing capabilities</p>
-                </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Data Research Engineer</h1>
+                <p>Automated PDF Research & Table Extraction</p>
+            </header>
+            
+            <div class="content-area">
+                <section class="features" id="welcome-features">
+                    <div class="feature-card">
+                        <h3>🔍 Automated Research</h3>
+                        <p>Enter a research topic and let AI find relevant PDFs for analysis</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>📊 Table Extraction</h3>
+                        <p>Automatically extract and analyze tables from research papers</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>📈 Smart Analysis</h3>
+                        <p>Get insights and categorized data from extracted tables</p>
+                    </div>
+                </section>
                 
-                <div class="feature-card">
-                    <h3>Research Tools</h3>
-                    <p>Comprehensive research and analysis tools</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Engineering Solutions</h3>
-                    <p>Robust engineering solutions for data workflows</p>
-                </div>
-            </section>
+                <section class="results-section" id="results-section" style="display: none;">
+                    <div class="results-header">
+                        <h2>Research Results</h2>
+                        <div class="results-stats" id="results-stats"></div>
+                    </div>
+                    
+                    <div class="research-summary" id="research-summary"></div>
+                    
+                    <div class="tables-container" id="tables-container">
+                        <!-- Extracted tables will be displayed here -->
+                    </div>
+                </section>
+            </div>
         </main>
     </div>
     
